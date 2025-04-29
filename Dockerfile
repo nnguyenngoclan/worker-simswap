@@ -1,7 +1,9 @@
-FROM python:3.10-slim
+FROM nvidia/cuda:12.1.0-base-ubuntu22.04
 
 RUN apt-get update -y \
     && apt-get install -y python3-pip unzip wget build-essential cmake libboost-all-dev libgtk-3-dev pkg-config git
+
+RUN ldconfig /usr/local/cuda-12.1/compat/
 
 RUN pip install --upgrade pip setuptools wheel
 
